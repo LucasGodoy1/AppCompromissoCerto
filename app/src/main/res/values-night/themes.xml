@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.CompromissoCerto" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:background">#242B36</item>
+    </style>
+
+    <style name="Base.Theme.Calendario" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:background">#455366</item>
+    </style>
+
+    <style name="Base.Theme.texto" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="Base.Theme.hint" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:hint">#9AFFFFFF</item>
+    </style>
+</resources>
