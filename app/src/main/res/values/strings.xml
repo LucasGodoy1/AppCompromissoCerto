@@ -2,5 +2,7 @@
     <string name="app_name">CompromissoCerto</string>
     <string name="caixa_seu_compromisso">Digite o Nome do seu compromisso</string>
     <string name="selecioneUmaData">Selecione Uma Data</string>
+    <string name="hora">hh:mm</string>
+    <string name="btnSalvar">Salvar</string>
 
 </resources>
