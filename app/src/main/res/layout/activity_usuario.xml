@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.UsuarioActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idBtnAdc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnAdcCompromissos"
+        android:layout_marginTop="400dp"
+        android:background="#78ADFA"
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="346dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idBtnMeusCompromissos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#78ADFA"
+        android:text="@string/btnMeusCompromissos"
+        tools:layout_editor_absoluteX="279dp"
+        tools:layout_editor_absoluteY="341dp" />
+</androidx.appcompat.widget.LinearLayoutCompat>

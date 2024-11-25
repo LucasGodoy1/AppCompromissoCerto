@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import lucasgodoy1.com.github.compromissocerto.R
-import lucasgodoy1.com.github.compromissocerto.controller.ComponenteDeTelaController
+import lucasgodoy1.com.github.compromissocerto.controller.ComponenteMainActivityController
 
 
 class MainActivity : AppCompatActivity() {
@@ -13,9 +13,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+        var componenteMainActivityController = ComponenteMainActivityController(this)
+        componenteMainActivityController.botaoSalvar()
 
-        var componenteDeTelaController = ComponenteDeTelaController(this)
-            componenteDeTelaController.botaoSalvar()
     }
 
 

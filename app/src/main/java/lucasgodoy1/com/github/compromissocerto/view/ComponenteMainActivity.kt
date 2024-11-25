@@ -6,7 +6,7 @@ import androidx.appcompat.widget.AppCompatButton
 import lucasgodoy1.com.github.compromissocerto.ui.MainActivity
 import lucasgodoy1.com.github.compromissocerto.R
 
-class ComponentesMainActivity (mainActivity: MainActivity){
+class ComponenteMainActivity (mainActivity: MainActivity){
     var caixaDigiteSeuCompromisso : EditText = mainActivity.findViewById(R.id.idCaixaDigit)
     var calendario : CalendarView = mainActivity.findViewById(R.id.idCalendario)
     var hora : EditText = mainActivity.findViewById(R.id.idHora)

@@ -4,5 +4,9 @@
     <string name="selecioneUmaData">Selecione Uma Data</string>
     <string name="hora">hh:mm</string>
     <string name="btnSalvar">Salvar</string>
+    <string name="btnMeusCompromissos">Meus Compromissos</string>
+    <string name="btnAdcCompromissos">Adicionar Novo Compromisso</string>
+    <string name="splashTitulopt1">Não perca mais</string>
+    <string name="splashTitulopt2">seus compromissos</string>
 
 </resources>
