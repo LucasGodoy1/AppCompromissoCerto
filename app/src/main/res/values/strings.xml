@@ -9,4 +9,12 @@
     <string name="splashTitulopt1">Não perca mais</string>
     <string name="splashTitulopt2">seus compromissos</string>
 
+    <string name="SegundoBtnNovoCompromisso">Adicionar compromisso</string>
+    <string name="BtnLixeira"></string>
+    <string name="BtnEditar"></string>
+
+
+
+
+
 </resources>
