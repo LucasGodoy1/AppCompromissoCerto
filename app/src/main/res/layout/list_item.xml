@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_margin="12dp"
+            android:background="#A6FFFFFF"
+            tools:layout_editor_absoluteX="58dp"
+            tools:layout_editor_absoluteY="128dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/idBtnEditar"
+                android:layout_width="45dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:background="@android:drawable/ic_menu_edit"
+                android:text="@string/BtnEditar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/idDataEHora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="dia 15/12/2024 às 10h"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idNomeCompromisso" />
+
+            <TextView
+                android:id="@+id/idNomeCompromisso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Consulta médica"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/idBtnLixeira"
+                android:layout_width="45dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="1dp"
+                android:background="@android:drawable/ic_menu_close_clear_cancel"
+                android:text="@string/BtnLixeira"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

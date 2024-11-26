@@ -19,9 +19,9 @@ class ComponenteUsuarioController (var usuarioActivity: UsuarioActivity){
 
 
 
-    fun btnMeusCompromissos(){
+    fun <R : Activity>  btnMeusCompromissos(destino: Class<R>){
         componenteUsuario.btnMeusCompromissos.setOnClickListener(View.OnClickListener {
-            //TODO: chamar a troca de tela para a tela com a lista de compromsisos salva
+            trocaDeTela(usuarioActivity, destino)
         })
     }
 
