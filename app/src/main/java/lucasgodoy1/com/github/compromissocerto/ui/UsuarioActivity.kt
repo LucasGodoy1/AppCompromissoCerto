@@ -5,7 +5,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import lucasgodoy1.com.github.compromissocerto.R
 import lucasgodoy1.com.github.compromissocerto.controller.ComponenteUsuarioController
-import lucasgodoy1.com.github.compromissocerto.util.trocaDeTela
 
 class UsuarioActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +14,6 @@ class UsuarioActivity : AppCompatActivity() {
 
         val componenteUsuario = ComponenteUsuarioController(this)
         componenteUsuario.btnAdcNovoCompromisso(MainActivity::class.java)
-
+        componenteUsuario.btnMeusCompromissos(CompromissosActivity ::class.java)
     }
 }
