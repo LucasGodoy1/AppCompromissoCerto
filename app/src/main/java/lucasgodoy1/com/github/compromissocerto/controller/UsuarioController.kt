@@ -4,10 +4,10 @@ import android.app.Activity
 import android.view.View
 import lucasgodoy1.com.github.compromissocerto.ui.UsuarioActivity
 import lucasgodoy1.com.github.compromissocerto.util.trocaDeTela
-import lucasgodoy1.com.github.compromissocerto.view.ComponenteUsuarioActivity
+import lucasgodoy1.com.github.compromissocerto.view.UsuarioActivityComponente
 
-class ComponenteUsuarioController (var usuarioActivity: UsuarioActivity){
-    var componenteUsuario = ComponenteUsuarioActivity(usuarioActivity)
+class UsuarioController (var usuarioActivity: UsuarioActivity){
+    var componenteUsuario = UsuarioActivityComponente(usuarioActivity)
 
 
     fun <R : Activity> btnAdcNovoCompromisso(destino: Class<R>) {

@@ -13,6 +13,8 @@ import lucasgodoy1.com.github.compromissocerto.model.Usuario
 
 class UsuarioAdapter(var aUsuarios : List<Usuario>, val context : Context) : RecyclerView.Adapter<UsuarioAdapter.ViewHolder>() {
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val contexto = parent.context
         val inflater = LayoutInflater.from(contexto)
@@ -48,7 +50,9 @@ class UsuarioAdapter(var aUsuarios : List<Usuario>, val context : Context) : Rec
                 // Ação de apagar
             }
         }
+
     }
+
 
 
 }

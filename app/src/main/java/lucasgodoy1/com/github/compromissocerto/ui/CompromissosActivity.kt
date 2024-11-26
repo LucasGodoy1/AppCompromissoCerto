@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import lucasgodoy1.com.github.compromissocerto.R
 import lucasgodoy1.com.github.compromissocerto.adapter.UsuarioAdapter
+import lucasgodoy1.com.github.compromissocerto.controller.CompromissoController
 import lucasgodoy1.com.github.compromissocerto.data.CompromissoDataBase
 import lucasgodoy1.com.github.compromissocerto.model.Usuario
 
@@ -27,10 +28,15 @@ class CompromissosActivity : AppCompatActivity() {
 
         if (aListaDeUsuarios.isNotEmpty()) {
             usuarioAdapter = UsuarioAdapter(aListaDeUsuarios, this)
+
+            recycleView = findViewById(R.id.idRecyclerView)
+            recycleView.layoutManager = LinearLayoutManager(this)
+            recycleView.adapter = usuarioAdapter
+            val compromissoController = CompromissoController(this)
+            compromissoController.BotãoAdicioanr()
+
         }
 
-        recycleView = findViewById(R.id.idRecyclerView)
-        recycleView.layoutManager = LinearLayoutManager(this)
-        recycleView.adapter = usuarioAdapter
+
     }
 }
