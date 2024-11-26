@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.EditarActivity">
+
+    <TextView
+        android:id="@+id/idTituloEditar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/archivonarrow"
+        android:text="@string/editar"
+        android:textSize="16sp"
+        android:theme="@style/Base.Theme.texto"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="389dp"
+        android:layout_height="594dp"
+        android:layout_margin="12dp"
+        android:background="#A6FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/idCompromissoParaEditar"
+            android:layout_width="225dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="32dp"
+            android:background="#00FFFFFF"
+            android:fontFamily="@font/archivonarrow"
+            android:text="@string/editarCompromisso"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:theme="@style/Base.Theme.texto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/idEditandoCompromisso"
+            android:layout_width="251dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:fontFamily="@font/archivonarrow"
+            android:hint="@string/hintEditarCompromisso"
+            android:importantForAutofill="no"
+            android:textSize="16sp"
+            android:theme="@style/Base.Theme.hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idCompromissoParaEditar" />
+
+        <TextView
+            android:id="@+id/idDataParaEditar"
+            android:layout_width="110dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="16dp"
+            android:background="#00FFFFFF"
+            android:fontFamily="@font/archivonarrow"
+            android:text="@string/editarData"
+            android:textSize="16sp"
+            android:theme="@style/Base.Theme.texto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idEditandoCompromisso" />
+
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="296dp"
+            android:layout_height="305dp"
+            android:layout_marginTop="12dp"
+            android:theme="@style/Base.Theme.Calendario"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idDataParaEditar" />
+
+        <TextView
+            android:id="@+id/idHoraParaEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="#00000000"
+            android:fontFamily="@font/archivonarrow"
+            android:text="@string/editarHora"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+
+        <EditText
+            android:id="@+id/editTextTime"
+            android:layout_width="65dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:fontFamily="@font/archivonarrow"
+            android:hint="@string/hintEditarHora"
+            android:importantForAutofill="no"
+            android:textSize="16sp"
+            android:theme="@style/Base.Theme.hint"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idHoraParaEditar"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#78ADFA"
+        android:fontFamily="@font/archivonarrow"
+        android:text="@string/btnSalvar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.333" />
+</androidx.constraintlayout.widget.ConstraintLayout>
