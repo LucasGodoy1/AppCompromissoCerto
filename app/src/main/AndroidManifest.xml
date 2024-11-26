@@ -19,7 +19,7 @@
             android:name=".ui.UsuarioActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.AdicionarActivity"
             android:exported="false" />
         <activity
             android:name=".ui.SplashActivity"
