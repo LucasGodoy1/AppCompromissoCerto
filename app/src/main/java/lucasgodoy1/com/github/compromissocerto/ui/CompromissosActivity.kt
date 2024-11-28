@@ -2,6 +2,7 @@ package lucasgodoy1.com.github.compromissocerto.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,6 +12,7 @@ import lucasgodoy1.com.github.compromissocerto.adapter.UsuarioAdapter
 import lucasgodoy1.com.github.compromissocerto.controller.CompromissoController
 import lucasgodoy1.com.github.compromissocerto.data.CompromissoDataBase
 import lucasgodoy1.com.github.compromissocerto.model.Usuario
+import lucasgodoy1.com.github.compromissocerto.util.trocaDeTela
 
 class CompromissosActivity : AppCompatActivity() {
     lateinit var aListaDeUsuarios : List<Usuario>
@@ -34,7 +36,11 @@ class CompromissosActivity : AppCompatActivity() {
             recycleView.adapter = usuarioAdapter
             val compromissoController = CompromissoController(this)
             compromissoController.BotãoAdicioanr()
-
+        }else{
+            Toast.makeText(this,
+                "Você Ainda não tem uma Lista De Compromisso", Toast.LENGTH_SHORT).show()
+            this.finish()
+            trocaDeTela(this, AdicionarActivity::class.java)
         }
 
 

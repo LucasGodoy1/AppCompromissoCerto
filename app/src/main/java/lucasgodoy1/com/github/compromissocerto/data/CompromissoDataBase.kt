@@ -59,6 +59,12 @@ class CompromissoDataBase(contexto : Context) : SQLiteOpenHelper(contexto, DB_NO
         return db?.update("tb_usuario", contentValues, whereClause, whereArgs) ?: -1
     }
 
+    fun deletarUsuario(id: Int?): Int {
+        val whereClause = "ID = ?"
+        val whereArgs = arrayOf(id.toString())
+        return db?.delete("tb_usuario", whereClause, whereArgs) ?: -1
+    }
+
 
 
 

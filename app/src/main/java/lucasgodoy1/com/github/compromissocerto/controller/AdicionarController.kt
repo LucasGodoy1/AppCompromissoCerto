@@ -33,9 +33,8 @@ class AdicionarController(val adicionarActivity: AdicionarActivity) {
                     compromissoDB.salvarDados("tb_usuario", contentValues)
 
                     Toast.makeText(adicionarActivity, "Salvo com Sucesso!", Toast.LENGTH_LONG).show()
-                    limpar()
-                }else{
-                    Toast.makeText(adicionarActivity, "Preencha os campos Obrigatios", Toast.LENGTH_SHORT).show()
+                    adicionarActivity.finish()
+
                 }
 
             })

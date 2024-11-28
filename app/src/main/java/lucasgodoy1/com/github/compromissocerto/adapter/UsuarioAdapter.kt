@@ -7,10 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
 import lucasgodoy1.com.github.compromissocerto.R
+import lucasgodoy1.com.github.compromissocerto.data.CompromissoDataBase
 import lucasgodoy1.com.github.compromissocerto.model.Usuario
+import lucasgodoy1.com.github.compromissocerto.ui.CompromissosActivity
 import lucasgodoy1.com.github.compromissocerto.ui.EditarActivity
 import lucasgodoy1.com.github.compromissocerto.util.trocaDeTela
 
@@ -66,8 +69,27 @@ class UsuarioAdapter(var aUsuarios : List<Usuario>, val context : Context) : Rec
 
 
             btnApagar.setOnClickListener {
-                // Ação de apagar
+                val db = CompromissoDataBase(context)
+                val alerta = android.app.AlertDialog.Builder(context)
+
+                alerta.setTitle("Confirmar Exclusão")
+                alerta.setMessage("Essa ação irá apagar este compromisso. Você deseja continuar?")
+
+                alerta.setPositiveButton("Sim") { _, _ ->
+                    val resultado = db.deletarUsuario(usuario.id)
+                    if (resultado > 0) {
+                        Toast.makeText(context, "Apagado com sucesso!", Toast.LENGTH_SHORT).show()
+                        (context as Activity).finish()
+
+                        trocaDeTela(context, CompromissosActivity::class.java)
+                    }
+                }
+                alerta.setNegativeButton("Não") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                alerta.show()
             }
+
         }
 
     }
