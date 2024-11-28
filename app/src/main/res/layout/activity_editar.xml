@@ -55,6 +55,7 @@
             android:fontFamily="@font/archivonarrow"
             android:hint="@string/hintEditarCompromisso"
             android:importantForAutofill="no"
+            android:textAlignment="center"
             android:textSize="16sp"
             android:theme="@style/Base.Theme.hint"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,12 +64,13 @@
 
         <TextView
             android:id="@+id/idDataParaEditar"
-            android:layout_width="110dp"
-            android:layout_height="25dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="42dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="12dp"
             android:background="#00FFFFFF"
             android:fontFamily="@font/archivonarrow"
             android:text="@string/editarData"
+            android:textAlignment="center"
             android:textSize="16sp"
             android:theme="@style/Base.Theme.texto"
             app:layout_constraintEnd_toEndOf="parent"
@@ -77,7 +79,7 @@
             app:layout_constraintTop_toBottomOf="@+id/idEditandoCompromisso" />
 
         <CalendarView
-            android:id="@+id/calendarView"
+            android:id="@+id/idCalendario"
             android:layout_width="296dp"
             android:layout_height="305dp"
             android:layout_marginTop="12dp"
@@ -95,21 +97,23 @@
             android:background="#00000000"
             android:fontFamily="@font/archivonarrow"
             android:text="@string/editarHora"
+            android:textAlignment="center"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+            app:layout_constraintTop_toBottomOf="@+id/idCalendario" />
 
         <EditText
-            android:id="@+id/editTextTime"
+            android:id="@+id/idEditTime"
             android:layout_width="65dp"
             android:layout_height="48dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
             android:ems="10"
             android:fontFamily="@font/archivonarrow"
             android:hint="@string/hintEditarHora"
             android:importantForAutofill="no"
+            android:textAlignment="center"
             android:textSize="16sp"
             android:theme="@style/Base.Theme.hint"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -121,12 +125,13 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/idEditBtnSalvar"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:background="#78ADFA"
         android:fontFamily="@font/archivonarrow"
-        android:text="@string/btnSalvar"
+        android:text="@string/btnSalvarAlteracoes"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

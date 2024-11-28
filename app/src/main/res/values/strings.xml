@@ -13,8 +13,13 @@
     <string name="BtnLixeira"></string>
     <string name="BtnEditar"></string>
 
-
-
+    <string name="editar">Editar:</string>
+    <string name="editarCompromisso">Compromisso:</string>
+    <string name="hintEditarCompromisso">Digite o nome do seu compromisso</string>
+    <string name="editarData">Data:</string>
+    <string name="editarHora">Horário:</string>
+    <string name="hintEditarHora">hh:mm</string>
+    <string name="btnSalvarAlteracoes">Salvar Alterações</string>
 
 
 </resources>

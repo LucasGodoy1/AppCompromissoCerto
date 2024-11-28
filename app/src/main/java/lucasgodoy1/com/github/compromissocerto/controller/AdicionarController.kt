@@ -5,29 +5,29 @@ import android.view.View
 import android.widget.Toast
 import lucasgodoy1.com.github.compromissocerto.data.CompromissoDataBase
 import lucasgodoy1.com.github.compromissocerto.ui.AdicionarActivity
-import lucasgodoy1.com.github.compromissocerto.view.MainActivityComponente
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import lucasgodoy1.com.github.compromissocerto.util.formatarData
+import lucasgodoy1.com.github.compromissocerto.util.validarCampo
+import lucasgodoy1.com.github.compromissocerto.view.AdicionarActivityComponente
+
 
 class AdicionarController(val adicionarActivity: AdicionarActivity) {
-    val componenteMain = MainActivityComponente(adicionarActivity)
+    val adcActivityComponente = AdicionarActivityComponente(adicionarActivity)
     val compromissoDB = CompromissoDataBase(adicionarActivity)
 
     fun botaoSalvar() {
 
-            componenteMain.btnSalvar.setOnClickListener(View.OnClickListener {
-                if (validarCampo()) {
-                    val compromisso = componenteMain.caixaDigiteSeuCompromisso.text
-                    val dataTimestamp = componenteMain.calendario.date
-                    val hora = componenteMain.hora.text
+            adcActivityComponente.btnSalvar.setOnClickListener(View.OnClickListener {
+                if (validarCampo(adcActivityComponente.caixaDigiteSeuCompromisso) && validarCampo(adcActivityComponente.hora)) {
 
-                    val dataFormatada = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                        .format(Date(dataTimestamp))
+                    val compromisso = adcActivityComponente.caixaDigiteSeuCompromisso.text
+                    val dataTimestamp = adcActivityComponente.calendario.date
+                    val hora = adcActivityComponente.hora.text
+
+
 
                     var contentValues = ContentValues()
                     contentValues.put("COMPROMISSO", compromisso.toString())
-                    contentValues.put("DATA", dataFormatada.toString())
+                    contentValues.put("DATA", formatarData(dataTimestamp))
                     contentValues.put("HORA", hora.toString())
 
                     compromissoDB.salvarDados("tb_usuario", contentValues)
@@ -43,26 +43,10 @@ class AdicionarController(val adicionarActivity: AdicionarActivity) {
     }
 
     fun limpar(){
-        componenteMain.caixaDigiteSeuCompromisso.setText("")
-        componenteMain.hora.setText("")
+        adcActivityComponente.caixaDigiteSeuCompromisso.setText("")
+        adcActivityComponente.hora.setText("")
     }
 
-
-    fun validarCampo(): Boolean {
-        var preenchido = true
-
-        if (componenteMain.caixaDigiteSeuCompromisso.text.isEmpty()) {
-            componenteMain.caixaDigiteSeuCompromisso.setError("* CAMPO OBRIGATORIO")
-            componenteMain.caixaDigiteSeuCompromisso.requestFocus()
-            preenchido = false
-        } else if (componenteMain.hora.text.isEmpty()) {
-            componenteMain.hora.setError("* CAMPO OBRIGATORIO")
-            componenteMain.hora.requestFocus()
-            preenchido = false
-        }
-        return preenchido
-
-    }
 
 
 }

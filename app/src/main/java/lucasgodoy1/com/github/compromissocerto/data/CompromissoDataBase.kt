@@ -25,7 +25,7 @@ class CompromissoDataBase(contexto : Context) : SQLiteOpenHelper(contexto, DB_NO
 
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        TODO("Not yet implemented")
+
     }
 
 
@@ -52,6 +52,14 @@ class CompromissoDataBase(contexto : Context) : SQLiteOpenHelper(contexto, DB_NO
         }
         return lista
     }
+
+    fun atualizarDados(id: Int, contentValues: ContentValues): Int {
+        val whereClause = "ID = ?"
+        val whereArgs = arrayOf(id.toString())
+        return db?.update("tb_usuario", contentValues, whereClause, whereArgs) ?: -1
+    }
+
+
 
 
 
