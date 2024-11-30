@@ -23,13 +23,18 @@ class EditarActivityController(val editarActivity: EditarActivity) {
     val hora = preferences.getString("HORA", "") ?: ""
 
 
-    fun seuCompromissoAtualEdit() {
+    fun inicializar(){
+        seuCompromissoAtualEdit()
+        botaoSalvarTelaEditar()
+    }
+
+    private fun seuCompromissoAtualEdit() {
         editarActivityComponente.editCompromisso.setText(compromisso)
         editarActivityComponente.editHora.setText(hora)
     }
 
 
-    fun botaoSalvarTelaEditar() {
+    private fun botaoSalvarTelaEditar() {
 
         editarActivityComponente.btnSalvar.setOnClickListener {
             if (validarCampo(editarActivityComponente.editCompromisso) && validarCampo(editarActivityComponente.editHora)) {

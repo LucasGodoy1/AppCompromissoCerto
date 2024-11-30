@@ -5,15 +5,21 @@ import androidx.appcompat.widget.AppCompatButton
 import lucasgodoy1.com.github.compromissocerto.R
 import lucasgodoy1.com.github.compromissocerto.ui.AdicionarActivity
 import lucasgodoy1.com.github.compromissocerto.ui.CompromissosActivity
-import lucasgodoy1.com.github.compromissocerto.util.trocaDeTela
+import lucasgodoy1.com.github.compromissocerto.util.esperarEFechar
+import lucasgodoy1.com.github.compromissocerto.util.trocarDeTela
 
 class CompromissoController(val activity : CompromissosActivity) {
     val btnAdicionar : AppCompatButton = activity.findViewById(R.id.idSegundoBtnNovoCompromisso)
 
 
-    fun BotãoAdicioanr(){
+    fun inicializar(){
+        botãoAdicioanr()
+    }
+
+    private fun botãoAdicioanr(){
         btnAdicionar.setOnClickListener(View.OnClickListener {
-            trocaDeTela(activity, AdicionarActivity::class.java)
+            trocarDeTela(activity, AdicionarActivity::class.java)
+            esperarEFechar(99, activity)
         })
     }
 

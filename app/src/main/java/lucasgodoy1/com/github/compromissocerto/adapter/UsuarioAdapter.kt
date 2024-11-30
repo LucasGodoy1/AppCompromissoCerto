@@ -2,7 +2,6 @@ package lucasgodoy1.com.github.compromissocerto.adapter
 
 import android.app.Activity
 import android.content.Context
-import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,8 @@ import lucasgodoy1.com.github.compromissocerto.data.CompromissoDataBase
 import lucasgodoy1.com.github.compromissocerto.model.Usuario
 import lucasgodoy1.com.github.compromissocerto.ui.CompromissosActivity
 import lucasgodoy1.com.github.compromissocerto.ui.EditarActivity
-import lucasgodoy1.com.github.compromissocerto.util.trocaDeTela
+import lucasgodoy1.com.github.compromissocerto.util.esperarEFechar
+import lucasgodoy1.com.github.compromissocerto.util.trocarDeTela
 
 
 
@@ -63,7 +63,7 @@ class UsuarioAdapter(var aUsuarios : List<Usuario>, val context : Context) : Rec
                 editor.apply()
 
 
-                trocaDeTela(context, EditarActivity::class.java)
+                trocarDeTela(context, EditarActivity::class.java)
                 (context as Activity).finish()
             }
 
@@ -79,9 +79,8 @@ class UsuarioAdapter(var aUsuarios : List<Usuario>, val context : Context) : Rec
                     val resultado = db.deletarUsuario(usuario.id)
                     if (resultado > 0) {
                         Toast.makeText(context, "Apagado com sucesso!", Toast.LENGTH_SHORT).show()
-                        (context as Activity).finish()
-
-                        trocaDeTela(context, CompromissosActivity::class.java)
+                        esperarEFechar(99, (context as Activity))
+                        trocarDeTela(context, CompromissosActivity::class.java)
                     }
                 }
                 alerta.setNegativeButton("Não") { dialog, _ ->

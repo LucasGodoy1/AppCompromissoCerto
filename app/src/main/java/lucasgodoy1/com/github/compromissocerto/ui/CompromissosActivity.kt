@@ -1,7 +1,7 @@
 package lucasgodoy1.com.github.compromissocerto.ui
 
-import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +12,8 @@ import lucasgodoy1.com.github.compromissocerto.adapter.UsuarioAdapter
 import lucasgodoy1.com.github.compromissocerto.controller.CompromissoController
 import lucasgodoy1.com.github.compromissocerto.data.CompromissoDataBase
 import lucasgodoy1.com.github.compromissocerto.model.Usuario
-import lucasgodoy1.com.github.compromissocerto.util.trocaDeTela
+import lucasgodoy1.com.github.compromissocerto.util.TAG
+import lucasgodoy1.com.github.compromissocerto.util.trocarDeTela
 
 class CompromissosActivity : AppCompatActivity() {
     lateinit var aListaDeUsuarios : List<Usuario>
@@ -25,6 +26,8 @@ class CompromissosActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_compromissos)
 
+        Log.w(TAG,"CompromissosActivity Iniciada")
+
         compromissoDB = CompromissoDataBase(this)
         aListaDeUsuarios = compromissoDB.listaDados()
 
@@ -35,12 +38,12 @@ class CompromissosActivity : AppCompatActivity() {
             recycleView.layoutManager = LinearLayoutManager(this)
             recycleView.adapter = usuarioAdapter
             val compromissoController = CompromissoController(this)
-            compromissoController.BotãoAdicioanr()
+            compromissoController.inicializar()
         }else{
             Toast.makeText(this,
                 "Você Ainda não tem uma Lista De Compromisso", Toast.LENGTH_SHORT).show()
             this.finish()
-            trocaDeTela(this, AdicionarActivity::class.java)
+            trocarDeTela(this, AdicionarActivity::class.java)
         }
 
 
