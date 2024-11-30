@@ -10,12 +10,19 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+val TAG = "Log_AppCompromissoCerto"
 
-fun <T : Context, R : Activity> trocaDeTela(a: T, b: Class<R>) {
+fun <T : Context, R : Activity> trocarDeTela(a: T, b: Class<R>) {
     Handler(Looper.getMainLooper()).postDelayed({
         val intent = Intent(a, b)
         a.startActivity(intent)
     }, 100)
+}
+
+fun esperarEFechar( segundos: Long, activity : Activity) {
+    Handler(Looper.getMainLooper()).postDelayed({
+        activity.finish()
+    }, segundos)
 }
 
 
@@ -33,4 +40,8 @@ fun validarCampo(editText : EditText): Boolean {
 fun formatarData(dataTimestamp : Long) : String{
     return SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         .format(Date(dataTimestamp))
+}
+
+fun versãoDoAPP(): String{
+    return "Versão 1.1"
 }
