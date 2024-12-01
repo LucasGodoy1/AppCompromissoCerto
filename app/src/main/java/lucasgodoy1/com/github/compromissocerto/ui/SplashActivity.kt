@@ -10,7 +10,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import lucasgodoy1.com.github.compromissocerto.R
-import lucasgodoy1.com.github.compromissocerto.config.AlarmeConfig
 import lucasgodoy1.com.github.compromissocerto.util.TAG
 
 class SplashActivity : AppCompatActivity() {
@@ -23,12 +22,6 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Log.w(TAG,"SplashActivity Iniciada")
-
-        val triggerTime = System.currentTimeMillis() + 60 * 1000
-
-        val alarmeConfig = AlarmeConfig(this)
-        alarmeConfig.agendarAlarme(triggerTime)
-
         trocarTela()
     }
 

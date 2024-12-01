@@ -35,6 +35,7 @@ class AlarmeConfig(private var context: Context) {
     private fun criarIntencao() {
         if (gerenciadorDeAlarmes.canScheduleExactAlarms()) {
             intencaoDeAlarme = Intent(context, AlarmeReceiverController::class.java)
+
             intencaoPendente = PendingIntent.getBroadcast(
                 context,
                 0,
