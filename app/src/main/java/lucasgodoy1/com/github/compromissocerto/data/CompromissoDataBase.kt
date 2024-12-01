@@ -7,33 +7,40 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import lucasgodoy1.com.github.compromissocerto.model.Usuario
 
-class CompromissoDataBase(contexto : Context) : SQLiteOpenHelper(contexto, DB_NOME, null, VERSAO){
+class CompromissoDataBase(contexto: Context) :
+    SQLiteOpenHelper(contexto, DB_NOME, null, VERSAO_ATUAL) {
 
-    var cursor : Cursor? = null
-    var db : SQLiteDatabase? = writableDatabase
+    var cursor: Cursor? = null
+    var db: SQLiteDatabase? = writableDatabase
 
-    companion object{
+    companion object {
         val DB_NOME = "CompromissoDB"
         val VERSAO = 1
+        val VERSAO_ATUAL = 2
+
     }
 
     override fun onCreate(sqLiteDatabase: SQLiteDatabase) {
         db = sqLiteDatabase
-        val query = "Create table tb_usuario (ID INTEGER PRIMARY KEY AUTOINCREMENT, COMPROMISSO TEXT, DATA TEXT, HORA TEXT)"
+        val query =
+            "Create table tb_usuario (ID INTEGER PRIMARY KEY AUTOINCREMENT, COMPROMISSO TEXT, DATA TEXT, HORA TEXT, ALARME_ID TEXT)"
         sqLiteDatabase?.execSQL(query)
     }
 
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-
+        if (VERSAO < VERSAO_ATUAL) {
+            val alterTableQuery = "ALTER TABLE tb_usuario ADD COLUMN ALARME_ID TEXT"
+            db?.execSQL(alterTableQuery)
+        }
     }
 
 
-    fun salvarDados(nomeTabela : String, contentValues: ContentValues){
-        db?.insert(nomeTabela, null,  contentValues)
+    fun salvarDados(nomeTabela: String, contentValues: ContentValues) {
+        db?.insert(nomeTabela, null, contentValues)
     }
 
-    fun listaDados() : List<Usuario>{
+    fun listaDados(): List<Usuario> {
         var lista = ArrayList<Usuario>()
         var querySQL = "SELECT * FROM tb_usuario"
         cursor = db?.rawQuery(querySQL, null)
@@ -44,8 +51,10 @@ class CompromissoDataBase(contexto : Context) : SQLiteOpenHelper(contexto, DB_NO
                 val compromisso = cursor.getString(cursor.getColumnIndexOrThrow("COMPROMISSO"))
                 val data = cursor.getString(cursor.getColumnIndexOrThrow("DATA"))
                 val hora = cursor.getString(cursor.getColumnIndexOrThrow("HORA"))
+                val alarmeID = cursor.getString(cursor.getColumnIndexOrThrow("ALARME_ID")) ?: ""
                 val usuario = Usuario(compromisso, data, hora)
                 usuario.id = id
+                usuario.alarmeId = alarmeID
 
                 lista.add(usuario)
             }
@@ -64,10 +73,6 @@ class CompromissoDataBase(contexto : Context) : SQLiteOpenHelper(contexto, DB_NO
         val whereArgs = arrayOf(id.toString())
         return db?.delete("tb_usuario", whereClause, whereArgs) ?: -1
     }
-
-
-
-
 
 
 }

@@ -13,7 +13,7 @@ class UsuarioActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_usuario)
-        Log.w(TAG,"UsuarioActivity Iniciada")
+        Log.w(TAG, "UsuarioActivity Iniciada")
         val componenteUsuario = UsuarioController(this)
         componenteUsuario.inicializar()
     }

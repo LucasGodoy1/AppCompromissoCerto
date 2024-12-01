@@ -21,47 +21,50 @@ class AdicionarController(val adicionarActivity: AdicionarActivity) {
     val adcActivityComponente = AdicionarActivityComponente(adicionarActivity)
     val compromissoDB = CompromissoDataBase(adicionarActivity)
     val contentValues = ContentValues()
-
+    val alarmeID = System.currentTimeMillis().toString().replace("-", "").substring(0, 8)
     val alarmeConfig = AlarmeConfig(adicionarActivity)
 
 
-
     @RequiresApi(Build.VERSION_CODES.S)
-    fun inicializar(){
+    fun inicializar() {
         botaoSalvar()
     }
 
     @RequiresApi(Build.VERSION_CODES.S)
     private fun botaoSalvar() {
 
-            adcActivityComponente.btnSalvar.setOnClickListener(View.OnClickListener {
-                if (validarCampo(adcActivityComponente.caixaDigiteSeuCompromisso) && validarCampo(adcActivityComponente.hora)) {
+        adcActivityComponente.btnSalvar.setOnClickListener(View.OnClickListener {
+            if (validarCampo(adcActivityComponente.caixaDigiteSeuCompromisso) && validarCampo(
+                    adcActivityComponente.hora
+                )
+            ) {
 
-                    val compromisso = adcActivityComponente.caixaDigiteSeuCompromisso.text
-                    val dataTimestamp = adcActivityComponente.calendario.date
-                    val hora = adcActivityComponente.hora.text
+                val compromisso = adcActivityComponente.caixaDigiteSeuCompromisso.text
+                val dataTimestamp = adcActivityComponente.calendario.date
+                val hora = adcActivityComponente.hora.text
 
-                    enviarParaDB(compromisso.toString(), dataTimestamp, hora.toString())
-                    val dataEHoraMillseg = converterDataEHoraEmMilliSeg(dataTimestamp, adcActivityComponente.hora)
-                    alarmeConfig.agendarAlarme(dataEHoraMillseg)
-                    //TODO: Identificar cada alarme individualmente por um id
-                    //TODO: adicioanr novo campo no DB referente ao id do alarme
+                enviarParaDB(compromisso.toString(), dataTimestamp, hora.toString())
+                val dataEHoraMillseg =
+                    converterDataEHoraEmMilliSeg(dataTimestamp, adcActivityComponente.hora)
+                alarmeConfig.agendarAlarme(dataEHoraMillseg, alarmeID.toInt())
+                //TODO: adicioanr um método para editar/apaagr alarme
 
-                    Toast.makeText(adicionarActivity, "Salvo com Sucesso!", Toast.LENGTH_LONG).show()
-                    trocarDeTela(adicionarActivity, CompromissosActivity::class.java)
-                    esperarEFechar(99, adicionarActivity)
-                }
-            })
+                Toast.makeText(adicionarActivity, "Salvo com Sucesso!", Toast.LENGTH_LONG).show()
+                trocarDeTela(adicionarActivity, CompromissosActivity::class.java)
+                esperarEFechar(99, adicionarActivity)
+            }
+        })
     }
 
-    fun enviarParaDB(compromisso : String, dataTimestamp : Long, hora : String){
+    fun enviarParaDB(compromisso: String, dataTimestamp: Long, hora: String) {
         contentValues.put("COMPROMISSO", compromisso.toString())
         contentValues.put("DATA", formatarData(dataTimestamp))
         contentValues.put("HORA", hora.toString())
+        contentValues.put("ALARME_ID", alarmeID)
         compromissoDB.salvarDados("tb_usuario", contentValues)
     }
 
-    fun limpar(){
+    fun limpar() {
         adcActivityComponente.caixaDigiteSeuCompromisso.setText("")
         adcActivityComponente.hora.setText("")
     }

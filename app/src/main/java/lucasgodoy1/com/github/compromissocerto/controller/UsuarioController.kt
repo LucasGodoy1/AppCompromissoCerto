@@ -8,12 +8,12 @@ import lucasgodoy1.com.github.compromissocerto.ui.UsuarioActivity
 import lucasgodoy1.com.github.compromissocerto.util.trocarDeTela
 import lucasgodoy1.com.github.compromissocerto.view.UsuarioActivityComponente
 
-class UsuarioController (var usuarioActivity: UsuarioActivity){
+class UsuarioController(var usuarioActivity: UsuarioActivity) {
     var componenteUsuario = UsuarioActivityComponente(usuarioActivity)
 
-    fun inicializar(){
+    fun inicializar() {
         btnAdcNovoCompromisso(AdicionarActivity::class.java)
-        btnMeusCompromissos(CompromissosActivity ::class.java)
+        btnMeusCompromissos(CompromissosActivity::class.java)
     }
 
 
@@ -25,8 +25,7 @@ class UsuarioController (var usuarioActivity: UsuarioActivity){
     }
 
 
-
-    private fun <R : Activity>  btnMeusCompromissos(destino: Class<R>){
+    private fun <R : Activity> btnMeusCompromissos(destino: Class<R>) {
         componenteUsuario.btnMeusCompromissos.setOnClickListener(View.OnClickListener {
             trocarDeTela(usuarioActivity, destino)
         })

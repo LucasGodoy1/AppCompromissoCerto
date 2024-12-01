@@ -66,3 +66,8 @@ fun converterDataEHoraEmMilliSeg(calendario: Long, editText: EditText): Long {
 
     return calendar.timeInMillis
 }
+
+fun gerarID(): Int {
+    return System.currentTimeMillis().toInt()
+
+}

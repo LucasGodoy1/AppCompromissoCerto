@@ -13,7 +13,7 @@ class EditarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_editar)
-        Log.w(TAG,"EditarActivity Iniciada")
+        Log.w(TAG, "EditarActivity Iniciada")
 
         val editarActivityController = EditarActivityController(this)
 

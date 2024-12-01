@@ -21,10 +21,9 @@ class SplashActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_splash)
 
-        Log.w(TAG,"SplashActivity Iniciada")
+        Log.w(TAG, "SplashActivity Iniciada")
         trocarTela()
     }
-
 
 
     private fun trocarTela() {

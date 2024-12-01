@@ -23,7 +23,7 @@ class EditarActivityController(val editarActivity: EditarActivity) {
     val hora = preferences.getString("HORA", "") ?: ""
 
 
-    fun inicializar(){
+    fun inicializar() {
         seuCompromissoAtualEdit()
         botaoSalvarTelaEditar()
     }
@@ -37,13 +37,19 @@ class EditarActivityController(val editarActivity: EditarActivity) {
     private fun botaoSalvarTelaEditar() {
 
         editarActivityComponente.btnSalvar.setOnClickListener {
-            if (validarCampo(editarActivityComponente.editCompromisso) && validarCampo(editarActivityComponente.editHora)) {
+            if (validarCampo(editarActivityComponente.editCompromisso) && validarCampo(
+                    editarActivityComponente.editHora
+                )
+            ) {
 
                 contentValues.put(
                     "COMPROMISSO",
                     editarActivityComponente.editCompromisso.text.toString()
                 )
-                contentValues.put("DATA", formatarData(editarActivityComponente.editCalendario.date))
+                contentValues.put(
+                    "DATA",
+                    formatarData(editarActivityComponente.editCalendario.date)
+                )
                 contentValues.put("HORA", editarActivityComponente.editHora.text.toString())
 
                 if (id.isNotEmpty()) {

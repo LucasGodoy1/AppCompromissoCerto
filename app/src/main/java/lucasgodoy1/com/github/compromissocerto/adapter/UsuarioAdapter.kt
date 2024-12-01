@@ -18,9 +18,8 @@ import lucasgodoy1.com.github.compromissocerto.util.esperarEFechar
 import lucasgodoy1.com.github.compromissocerto.util.trocarDeTela
 
 
-
-class UsuarioAdapter(var aUsuarios : List<Usuario>, val context : Context) : RecyclerView.Adapter<UsuarioAdapter.ViewHolder>() {
-
+class UsuarioAdapter(var aUsuarios: List<Usuario>, val context: Context) :
+    RecyclerView.Adapter<UsuarioAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -92,7 +91,6 @@ class UsuarioAdapter(var aUsuarios : List<Usuario>, val context : Context) : Rec
         }
 
     }
-
 
 
 }

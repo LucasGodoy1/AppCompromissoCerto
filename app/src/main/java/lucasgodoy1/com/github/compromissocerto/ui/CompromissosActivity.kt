@@ -16,17 +16,17 @@ import lucasgodoy1.com.github.compromissocerto.util.TAG
 import lucasgodoy1.com.github.compromissocerto.util.trocarDeTela
 
 class CompromissosActivity : AppCompatActivity() {
-    lateinit var aListaDeUsuarios : List<Usuario>
+    lateinit var aListaDeUsuarios: List<Usuario>
     lateinit var usuarioAdapter: UsuarioAdapter
-    lateinit var compromissoDB : CompromissoDataBase
-    lateinit var recycleView : RecyclerView
+    lateinit var compromissoDB: CompromissoDataBase
+    lateinit var recycleView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_compromissos)
 
-        Log.w(TAG,"CompromissosActivity Iniciada")
+        Log.w(TAG, "CompromissosActivity Iniciada")
 
         compromissoDB = CompromissoDataBase(this)
         aListaDeUsuarios = compromissoDB.listaDados()
@@ -39,9 +39,11 @@ class CompromissosActivity : AppCompatActivity() {
             recycleView.adapter = usuarioAdapter
             val compromissoController = CompromissoController(this)
             compromissoController.inicializar()
-        }else{
-            Toast.makeText(this,
-                "Você Ainda não tem uma Lista De Compromisso", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(
+                this,
+                "Você Ainda não tem uma Lista De Compromisso", Toast.LENGTH_SHORT
+            ).show()
             this.finish()
             trocarDeTela(this, AdicionarActivity::class.java)
         }

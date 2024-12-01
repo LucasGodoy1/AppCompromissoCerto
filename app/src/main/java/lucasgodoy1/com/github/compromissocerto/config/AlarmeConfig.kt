@@ -18,6 +18,7 @@ class AlarmeConfig(private var context: Context) {
     lateinit var intencaoDeAlarme: Intent
     lateinit var intencaoPendente: PendingIntent
 
+
     fun permitirAlarme() {
         Toast.makeText(
             context, "Permissão necessária para configurar alarmes. Ative nas configurações.",
@@ -32,17 +33,19 @@ class AlarmeConfig(private var context: Context) {
     }
 
     @RequiresApi(Build.VERSION_CODES.S)
-    private fun criarIntencao() {
+    private fun criarIntencao(alarmeID: Int) {
         if (gerenciadorDeAlarmes.canScheduleExactAlarms()) {
-            intencaoDeAlarme = Intent(context, AlarmeReceiverController::class.java)
+            intencaoDeAlarme = Intent(context, AlarmeReceiverController::class.java).apply {
+                putExtra("alarmeId", alarmeID)
+            }
 
             intencaoPendente = PendingIntent.getBroadcast(
                 context,
-                0,
+                alarmeID,
                 intencaoDeAlarme,
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
-            Log.w(TAG,"Intencao criada")
+            Log.w(TAG, "Intencao criada")
 
         } else {
             permitirAlarme()
@@ -50,14 +53,14 @@ class AlarmeConfig(private var context: Context) {
     }
 
     @RequiresApi(Build.VERSION_CODES.S)
-    fun agendarAlarme(horarioEmMilissegundos: Long) {
-        criarIntencao()
+    fun agendarAlarme(horarioEmMilissegundos: Long, alarmeID: Int) {
+        criarIntencao(alarmeID)
         gerenciadorDeAlarmes.setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP,
             horarioEmMilissegundos,
             intencaoPendente
         )
-        Log.w(TAG,"Alarme agendado")
+        Log.w(TAG, "Alarme agendado")
 
     }
 }
