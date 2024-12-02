@@ -5,7 +5,9 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import lucasgodoy1.com.github.compromissocerto.model.Usuario
+import lucasgodoy1.com.github.compromissocerto.util.TAG
 
 class CompromissoDataBase(contexto: Context) :
     SQLiteOpenHelper(contexto, DB_NOME, null, VERSAO_ATUAL) {
@@ -72,6 +74,28 @@ class CompromissoDataBase(contexto: Context) :
         val whereClause = "ID = ?"
         val whereArgs = arrayOf(id.toString())
         return db?.delete("tb_usuario", whereClause, whereArgs) ?: -1
+    }
+
+    fun buscarDados(alarmeID: String): Usuario? {
+        val querySQL = "SELECT * FROM tb_usuario WHERE ALARME_ID = ?"
+        val cursor = db?.rawQuery(querySQL, arrayOf(alarmeID))
+
+        cursor?.use { c ->
+            if (c.moveToFirst()) {
+                val id = c.getInt(c.getColumnIndexOrThrow("ID"))
+                val compromisso = c.getString(c.getColumnIndexOrThrow("COMPROMISSO"))
+                val data = c.getString(c.getColumnIndexOrThrow("DATA"))
+                val hora = c.getString(c.getColumnIndexOrThrow("HORA"))
+                val alarmeId = c.getString(c.getColumnIndexOrThrow("ALARME_ID"))
+
+                return Usuario(compromisso, data, hora).apply {
+                    this.id = id
+                    this.alarmeId = alarmeId
+                }
+            }
+        }
+        Log.e(TAG, "ERRO! Select retornou VAZIO")
+        return null
     }
 
 

@@ -37,8 +37,10 @@ class CompromissosActivity : AppCompatActivity() {
             recycleView = findViewById(R.id.idRecyclerView)
             recycleView.layoutManager = LinearLayoutManager(this)
             recycleView.adapter = usuarioAdapter
+
             val compromissoController = CompromissoController(this)
             compromissoController.inicializar()
+
         } else {
             Toast.makeText(
                 this,

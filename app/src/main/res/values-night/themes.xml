@@ -16,4 +16,8 @@
     <style name="Base.Theme.hint" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:hint">#9AFFFFFF</item>
     </style>
+
+    <style name="Base.Theme.btn" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:backgroundTint">#6F7B8C</item>
+    </style>
 </resources>

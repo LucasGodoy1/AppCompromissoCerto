@@ -63,4 +63,26 @@ class AlarmeConfig(private var context: Context) {
         Log.w(TAG, "Alarme agendado")
 
     }
+
+    @RequiresApi(Build.VERSION_CODES.S)
+    fun excluirAlarme(alarmeID: Int) {
+        val intencaoDeAlarme = Intent(context, AlarmeReceiverController::class.java).apply {
+            putExtra("alarmeId", alarmeID)
+        }
+
+        val intencaoPendente = PendingIntent.getBroadcast(
+            context,
+            alarmeID,
+            intencaoDeAlarme,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
+        gerenciadorDeAlarmes.cancel(intencaoPendente)
+        intencaoPendente.cancel()
+
+        Log.i(TAG, "Alarme com ID $alarmeID excluido")
+    }
+
+
+
 }

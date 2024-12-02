@@ -2,18 +2,23 @@ package lucasgodoy1.com.github.compromissocerto.adapter
 
 import android.app.Activity
 import android.content.Context
+import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
 import lucasgodoy1.com.github.compromissocerto.R
+import lucasgodoy1.com.github.compromissocerto.config.AlarmeConfig
 import lucasgodoy1.com.github.compromissocerto.data.CompromissoDataBase
 import lucasgodoy1.com.github.compromissocerto.model.Usuario
 import lucasgodoy1.com.github.compromissocerto.ui.CompromissosActivity
 import lucasgodoy1.com.github.compromissocerto.ui.EditarActivity
+import lucasgodoy1.com.github.compromissocerto.util.TAG
 import lucasgodoy1.com.github.compromissocerto.util.esperarEFechar
 import lucasgodoy1.com.github.compromissocerto.util.trocarDeTela
 
@@ -47,6 +52,7 @@ class UsuarioAdapter(var aUsuarios: List<Usuario>, val context: Context) :
         val btnApagar: AppCompatButton = itemView.findViewById(R.id.idBtnLixeira)
 
 
+        @RequiresApi(Build.VERSION_CODES.S)
         fun bind(usuario: Usuario) {
             txtNomeDoCompromisso.text = usuario.compromisso
             txtDataEHora.text = "Dia ${usuario.data} às ${usuario.hora}"
@@ -59,6 +65,7 @@ class UsuarioAdapter(var aUsuarios: List<Usuario>, val context: Context) :
                 editor.putString("COMPROMISSO", usuario.compromisso)
                 editor.putString("DATA", usuario.data)
                 editor.putString("HORA", usuario.hora)
+                editor.putString("ALARME_ID", usuario.alarmeId)
                 editor.apply()
 
 
@@ -76,7 +83,13 @@ class UsuarioAdapter(var aUsuarios: List<Usuario>, val context: Context) :
 
                 alerta.setPositiveButton("Sim") { _, _ ->
                     val resultado = db.deletarUsuario(usuario.id)
+                    val alarmeConfig = AlarmeConfig(context)
+
+                    val alarmeID = usuario.alarmeId?.toInt() ?: Log.e(TAG, "ERRO! Alarme ID esta nullo")
+                    alarmeConfig.excluirAlarme(alarmeID)
+
                     if (resultado > 0) {
+                        Log.i(TAG, "Compromisso Excluido")
                         Toast.makeText(context, "Apagado com sucesso!", Toast.LENGTH_SHORT).show()
                         esperarEFechar(99, (context as Activity))
                         trocarDeTela(context, CompromissosActivity::class.java)

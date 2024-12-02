@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="@string/btnAdcCompromissos"
         android:layout_marginTop="400dp"
-        android:background="#78ADFA"
+        android:theme="@style/Base.Theme.btn"
         tools:layout_editor_absoluteX="52dp"
         tools:layout_editor_absoluteY="346dp" />
 
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="#78ADFA"
+        android:theme="@style/Base.Theme.btn"
         android:text="@string/btnMeusCompromissos"
         tools:layout_editor_absoluteX="279dp"
         tools:layout_editor_absoluteY="341dp" />

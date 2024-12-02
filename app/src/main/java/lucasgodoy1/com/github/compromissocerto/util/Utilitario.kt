@@ -67,7 +67,8 @@ fun converterDataEHoraEmMilliSeg(calendario: Long, editText: EditText): Long {
     return calendar.timeInMillis
 }
 
-fun gerarID(): Int {
-    return System.currentTimeMillis().toInt()
+fun gerarID(): String {
+    val alarmeID = System.currentTimeMillis().toString().replace("-", "").substring(0, 8)
+    return alarmeID
 
 }
