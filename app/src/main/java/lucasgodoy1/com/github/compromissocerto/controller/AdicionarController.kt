@@ -49,7 +49,6 @@ class AdicionarController(val adicionarActivity: AdicionarActivity) {
                 val dataEHoraMillseg =
                     converterDataEHoraEmMilliSeg(dataTimestamp, adcActivityComponente.hora)
                 alarmeConfig.agendarAlarme(dataEHoraMillseg, alarmeID.toInt())
-                //TODO: adicionar um método para editar/apaagr alarme
 
                 Toast.makeText(adicionarActivity, "Salvo com Sucesso!", Toast.LENGTH_LONG).show()
                 trocarDeTela(adicionarActivity, CompromissosActivity::class.java)

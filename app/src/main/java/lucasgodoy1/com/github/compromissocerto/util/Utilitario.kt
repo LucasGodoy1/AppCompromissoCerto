@@ -4,10 +4,11 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.icu.util.Calendar
+import android.net.Uri
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.widget.EditText
+import android.widget.Toast
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -25,6 +26,19 @@ fun esperarEFechar(segundos: Long, activity: Activity) {
     Handler(Looper.getMainLooper()).postDelayed({
         activity.finish()
     }, segundos)
+}
+
+fun permissoesDoApp(context: Context) {
+    Toast.makeText(
+        context, "Permissão necessária para configurar alarmes. Ative nas configurações.",
+        Toast.LENGTH_LONG
+    ).show()
+
+    val intentParaConfiguracoes =
+        Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM).apply {
+            data = Uri.parse("package:${context.packageName}")
+        }
+    context.startActivity(intentParaConfiguracoes)
 }
 
 
@@ -70,5 +84,4 @@ fun converterDataEHoraEmMilliSeg(calendario: Long, editText: EditText): Long {
 fun gerarID(): String {
     val alarmeID = System.currentTimeMillis().toString().replace("-", "").substring(0, 8)
     return alarmeID
-
 }

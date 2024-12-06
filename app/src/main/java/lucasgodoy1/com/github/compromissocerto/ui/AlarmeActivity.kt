@@ -1,11 +1,8 @@
 package lucasgodoy1.com.github.compromissocerto.ui
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import lucasgodoy1.com.github.compromissocerto.R
 import lucasgodoy1.com.github.compromissocerto.controller.AlarmeActivityController
 
