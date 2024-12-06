@@ -16,6 +16,6 @@ Material Design: Interface intuitiva.
 Android Notification Manager: Para gerenciar lembretes.
 
 
-<img align="center" alt="App para notificação de compromissos" height="450" width="700" src="https://cdn.discordapp.com/attachments/915954412491517973/1314504023608524870/novo2.png?ex=675402c5&is=6752b145&hm=cb7f53dde4642c2cc2876251988510d79bf6e4bc7484edb2ebb406a5bbd38271&">
+<img align="center" alt="App para notificação de compromissos" height="450" width="800" src="https://cdn.discordapp.com/attachments/915954412491517973/1314504023608524870/novo2.png?ex=675402c5&is=6752b145&hm=cb7f53dde4642c2cc2876251988510d79bf6e4bc7484edb2ebb406a5bbd38271&">
 
 
