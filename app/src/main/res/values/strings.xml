@@ -20,6 +20,7 @@
     <string name="editarHora">Horário:</string>
     <string name="hintEditarHora">hh:mm</string>
     <string name="btnSalvarAlteracoes">Salvar Alterações</string>
+    <string name="btnParar">Parar</string>
 
 
 </resources>
