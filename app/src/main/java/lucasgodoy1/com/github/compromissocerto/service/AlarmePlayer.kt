@@ -1,7 +1,6 @@
 package lucasgodoy1.com.github.compromissocerto.service
 
 import android.content.Context
-import android.media.Ringtone
 import android.media.RingtoneManager
 import android.os.Handler
 import android.os.Looper
@@ -15,7 +14,7 @@ class AlarmePlayer(val context: Context) {
 
     fun iniciarSomDoAlarme(){
         ringtone.play()
-        PararSomEmCincoMin()
+        pararSomEmCincoMin()
     }
 
     fun pararSomDeAlarme(){
@@ -24,9 +23,8 @@ class AlarmePlayer(val context: Context) {
         }
     }
 
-    fun PararSomEmCincoMin(){
+    fun pararSomEmCincoMin(){
         if (ringtone.isPlaying){
-
             Handler(Looper.getMainLooper()).postDelayed({
                 ringtone.stop()
             }, 300000)

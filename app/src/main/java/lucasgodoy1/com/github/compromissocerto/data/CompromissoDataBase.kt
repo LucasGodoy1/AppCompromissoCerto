@@ -18,7 +18,7 @@ class CompromissoDataBase(contexto: Context) :
     companion object {
         val DB_NOME = "CompromissoDB"
         val VERSAO = 1
-        val VERSAO_ATUAL = 2
+        val VERSAO_ATUAL = 6
 
     }
 
@@ -32,7 +32,7 @@ class CompromissoDataBase(contexto: Context) :
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         if (VERSAO < VERSAO_ATUAL) {
-            val alterTableQuery = "ALTER TABLE tb_usuario ADD COLUMN ALARME_ID TEXT"
+            val alterTableQuery = "ALTER TABLE tb_usuario ADD COLUMN DATA_TIME_STAMP LONG"
             db?.execSQL(alterTableQuery)
         }
     }
@@ -54,10 +54,11 @@ class CompromissoDataBase(contexto: Context) :
                 val data = cursor.getString(cursor.getColumnIndexOrThrow("DATA"))
                 val hora = cursor.getString(cursor.getColumnIndexOrThrow("HORA"))
                 val alarmeID = cursor.getString(cursor.getColumnIndexOrThrow("ALARME_ID")) ?: ""
+                val dataTimeStamp = cursor.getString(cursor.getColumnIndexOrThrow("DATA_TIME_STAMP")) ?: "1111111111111"
                 val usuario = Usuario(compromisso, data, hora)
                 usuario.id = id
                 usuario.alarmeId = alarmeID
-
+                usuario.dataTimeStamp = dataTimeStamp.toLong()
                 lista.add(usuario)
             }
         }

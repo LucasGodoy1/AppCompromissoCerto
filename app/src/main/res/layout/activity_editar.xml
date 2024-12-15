@@ -112,6 +112,7 @@
             android:ems="10"
             android:fontFamily="@font/archivonarrow"
             android:hint="@string/hintEditarHora"
+            android:inputType="time"
             android:importantForAutofill="no"
             android:textAlignment="center"
             android:textSize="16sp"

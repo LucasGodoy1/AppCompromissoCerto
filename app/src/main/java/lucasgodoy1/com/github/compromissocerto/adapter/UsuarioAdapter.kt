@@ -66,6 +66,7 @@ class UsuarioAdapter(var aUsuarios: List<Usuario>, val context: Context) :
                 editor.putString("DATA", usuario.data)
                 editor.putString("HORA", usuario.hora)
                 editor.putString("ALARME_ID", usuario.alarmeId)
+                editor.putString("DATA_TIME_STAMP", usuario.dataTimeStamp.toString())
                 editor.apply()
 
 

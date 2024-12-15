@@ -11,6 +11,8 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import lucasgodoy1.com.github.compromissocerto.R
 import lucasgodoy1.com.github.compromissocerto.util.TAG
+import lucasgodoy1.com.github.compromissocerto.util.solicitarAbrirNovaJanela
+import lucasgodoy1.com.github.compromissocerto.util.verificarMostrarTelaDeBloqueio
 
 class SplashActivity : AppCompatActivity() {
     val tempoDeEspera = 1000L
@@ -28,6 +30,8 @@ class SplashActivity : AppCompatActivity() {
 
     private fun trocarTela() {
         Handler(Looper.getMainLooper()).postDelayed({
+            verificarMostrarTelaDeBloqueio(this)
+            solicitarAbrirNovaJanela(this)
             startActivity(Intent(this, UsuarioActivity::class.java))
             finish()
         }, tempoDeEspera)

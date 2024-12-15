@@ -16,6 +16,8 @@ class AlarmeActivity : AppCompatActivity() {
         val alarmeActivityController = AlarmeActivityController(this, alarmeID.toString())
         alarmeActivityController.inicializar()
 
+
     }
+
 
 }

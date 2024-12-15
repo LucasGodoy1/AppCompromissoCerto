@@ -15,10 +15,10 @@ import java.util.Locale
 
 val TAG = "Log_AppCompromissoCerto"
 
-fun <T : Context, R : Activity> trocarDeTela(a: T, b: Class<R>) {
+fun <T : Context, R : Activity> trocarDeTela(origem: T, destino: Class<R>) {
     Handler(Looper.getMainLooper()).postDelayed({
-        val intent = Intent(a, b)
-        a.startActivity(intent)
+        val intent = Intent(origem, destino)
+        origem.startActivity(intent)
     }, 100)
 }
 
@@ -26,19 +26,6 @@ fun esperarEFechar(segundos: Long, activity: Activity) {
     Handler(Looper.getMainLooper()).postDelayed({
         activity.finish()
     }, segundos)
-}
-
-fun permissoesDoApp(context: Context) {
-    Toast.makeText(
-        context, "Permissão necessária para configurar alarmes. Ative nas configurações.",
-        Toast.LENGTH_LONG
-    ).show()
-
-    val intentParaConfiguracoes =
-        Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM).apply {
-            data = Uri.parse("package:${context.packageName}")
-        }
-    context.startActivity(intentParaConfiguracoes)
 }
 
 
