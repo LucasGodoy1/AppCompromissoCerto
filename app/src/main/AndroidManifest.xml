@@ -18,7 +18,8 @@
         tools:targetApi="31">
         <activity
             android:name=".ui.AlarmeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask"/>
 
         <receiver android:name=".controller.AlarmeReceiverController" />
 

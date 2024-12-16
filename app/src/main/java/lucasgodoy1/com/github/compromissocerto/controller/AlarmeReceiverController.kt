@@ -13,6 +13,9 @@ class AlarmeReceiverController : BroadcastReceiver() {
         Log.i(TAG, "Seu Alarme foi acionado")
         val alarmeID = intent.getIntExtra("alarmeId", 0)
 
+        val sharedPreferences = context.getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
+        sharedPreferences.edit().putInt("alarme_ativo_id", alarmeID).apply()
+
         val intentTela = Intent(context, AlarmeActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK
 

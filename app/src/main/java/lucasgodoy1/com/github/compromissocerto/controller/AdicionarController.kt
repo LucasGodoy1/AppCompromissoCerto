@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import lucasgodoy1.com.github.compromissocerto.config.AlarmeConfig
-import lucasgodoy1.com.github.compromissocerto.data.CompromissoDataBase
+import lucasgodoy1.com.github.compromissocerto.datasource.AppDataBase
 import lucasgodoy1.com.github.compromissocerto.ui.AdicionarActivity
 import lucasgodoy1.com.github.compromissocerto.ui.CompromissosActivity
 import lucasgodoy1.com.github.compromissocerto.util.TAG
@@ -24,7 +24,7 @@ import lucasgodoy1.com.github.compromissocerto.view.AdicionarActivityComponente
 
 class AdicionarController(val adicionarActivity: AdicionarActivity) {
     val adcActivityComponente = AdicionarActivityComponente(adicionarActivity)
-    val compromissoDB = CompromissoDataBase(adicionarActivity)
+    val compromissoDB = AppDataBase(adicionarActivity)
     val contentValues = ContentValues()
     val alarmeID = gerarID()
     val alarmeConfig = AlarmeConfig(adicionarActivity)
@@ -70,7 +70,7 @@ class AdicionarController(val adicionarActivity: AdicionarActivity) {
         contentValues.put("HORA", hora)
         contentValues.put("ALARME_ID", alarmeID)
         contentValues.put("DATA_TIME_STAMP", dataTimestamp)
-        compromissoDB.salvarDados("tb_usuario", contentValues)
+        compromissoDB.insertDados( contentValues)
     }
 
     fun limpar() {

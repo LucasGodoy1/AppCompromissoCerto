@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import lucasgodoy1.com.github.compromissocerto.R
 import lucasgodoy1.com.github.compromissocerto.adapter.UsuarioAdapter
 import lucasgodoy1.com.github.compromissocerto.controller.CompromissoController
-import lucasgodoy1.com.github.compromissocerto.data.CompromissoDataBase
+import lucasgodoy1.com.github.compromissocerto.datasource.AppDataBase
 import lucasgodoy1.com.github.compromissocerto.model.Usuario
 import lucasgodoy1.com.github.compromissocerto.util.TAG
 import lucasgodoy1.com.github.compromissocerto.util.trocarDeTela
@@ -18,7 +18,7 @@ import lucasgodoy1.com.github.compromissocerto.util.trocarDeTela
 class CompromissosActivity : AppCompatActivity() {
     lateinit var aListaDeUsuarios: List<Usuario>
     lateinit var usuarioAdapter: UsuarioAdapter
-    lateinit var compromissoDB: CompromissoDataBase
+    lateinit var compromissoDB: AppDataBase
     lateinit var recycleView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +28,7 @@ class CompromissosActivity : AppCompatActivity() {
 
         Log.w(TAG, "CompromissosActivity Iniciada")
 
-        compromissoDB = CompromissoDataBase(this)
+        compromissoDB = AppDataBase(this)
         aListaDeUsuarios = compromissoDB.listaDados()
 
         if (aListaDeUsuarios.isNotEmpty()) {

@@ -1,19 +1,23 @@
 package lucasgodoy1.com.github.compromissocerto.controller
 
+import android.content.Context
 import android.view.View
-import lucasgodoy1.com.github.compromissocerto.data.CompromissoDataBase
+import lucasgodoy1.com.github.compromissocerto.datasource.AppDataBase
 import lucasgodoy1.com.github.compromissocerto.service.AlarmePlayer
 import lucasgodoy1.com.github.compromissocerto.ui.AlarmeActivity
 import lucasgodoy1.com.github.compromissocerto.view.AlarmeActivityComponente
 
 class AlarmeActivityController(val alarmeActivity : AlarmeActivity, val AlarmeID: String) {
     private val alarmeComponente = AlarmeActivityComponente(alarmeActivity)
-    private val data = CompromissoDataBase(alarmeActivity)
-    private val alarmePlayer = AlarmePlayer(alarmeActivity)
+    private val data = AppDataBase(alarmeActivity)
+    val sharedPreferences = alarmeActivity.getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
+
+
 
     fun inicializar(){
+        AlarmePlayer.inicializar(alarmeActivity)
         exibirMsg()
-        alarmePlayer.iniciarSomDoAlarme()
+        AlarmePlayer.iniciarSomDoAlarme()
         botaoParar()
     }
 
@@ -27,13 +31,11 @@ class AlarmeActivityController(val alarmeActivity : AlarmeActivity, val AlarmeID
 
     fun botaoParar(){
         alarmeComponente.btnParar.setOnClickListener(View.OnClickListener {
-            alarmePlayer.pararSomDeAlarme()
+            AlarmePlayer.pararSomDeAlarme()
             alarmeActivity.finish()
+            sharedPreferences.edit().clear().apply()
         })
     }
-
-
-
 
 
 }

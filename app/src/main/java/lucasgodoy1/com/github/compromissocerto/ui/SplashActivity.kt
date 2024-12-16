@@ -1,5 +1,6 @@
 package lucasgodoy1.com.github.compromissocerto.ui
 
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -17,6 +18,7 @@ import lucasgodoy1.com.github.compromissocerto.util.verificarMostrarTelaDeBloque
 class SplashActivity : AppCompatActivity() {
     val tempoDeEspera = 1000L
 
+
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,9 +26,27 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Log.w(TAG, "SplashActivity Iniciada")
-        trocarTela()
+        verificarAlarmeAtivo()
     }
 
+
+
+    private fun verificarAlarmeAtivo() {
+        val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
+        val alarmeID = sharedPreferences.getInt("alarme_ativo_id", 0)
+
+        if (alarmeID != 0) {
+            Log.i(TAG, "Alarme ativo detectado. Redirecionando para AlarmeActivity.")
+            val intent = Intent(this, AlarmeActivity::class.java).apply {
+                putExtra("alarmeID", alarmeID)
+            }
+            startActivity(intent)
+            finish()
+
+        } else {
+            trocarTela()
+        }
+    }
 
     private fun trocarTela() {
         Handler(Looper.getMainLooper()).postDelayed({
@@ -36,6 +56,4 @@ class SplashActivity : AppCompatActivity() {
             finish()
         }, tempoDeEspera)
     }
-
-
 }

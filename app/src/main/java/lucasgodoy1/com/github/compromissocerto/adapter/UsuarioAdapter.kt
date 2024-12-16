@@ -14,7 +14,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
 import lucasgodoy1.com.github.compromissocerto.R
 import lucasgodoy1.com.github.compromissocerto.config.AlarmeConfig
-import lucasgodoy1.com.github.compromissocerto.data.CompromissoDataBase
+import lucasgodoy1.com.github.compromissocerto.datasource.AppDataBase
 import lucasgodoy1.com.github.compromissocerto.model.Usuario
 import lucasgodoy1.com.github.compromissocerto.ui.CompromissosActivity
 import lucasgodoy1.com.github.compromissocerto.ui.EditarActivity
@@ -76,7 +76,7 @@ class UsuarioAdapter(var aUsuarios: List<Usuario>, val context: Context) :
 
 
             btnApagar.setOnClickListener {
-                val db = CompromissoDataBase(context)
+                val db = AppDataBase(context)
                 val alerta = android.app.AlertDialog.Builder(context)
 
                 alerta.setTitle("Confirmar Exclusão")

@@ -8,7 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import lucasgodoy1.com.github.compromissocerto.config.AlarmeConfig
-import lucasgodoy1.com.github.compromissocerto.data.CompromissoDataBase
+import lucasgodoy1.com.github.compromissocerto.datasource.AppDataBase
 import lucasgodoy1.com.github.compromissocerto.ui.CompromissosActivity
 import lucasgodoy1.com.github.compromissocerto.ui.EditarActivity
 import lucasgodoy1.com.github.compromissocerto.util.TAG
@@ -23,7 +23,7 @@ class EditarActivityController(val editarActivity: EditarActivity) {
     val editarActivityComponente = EditarActivityComponente(editarActivity)
     val preferences = editarActivity.getSharedPreferences("EDITAR_TEMP", Context.MODE_PRIVATE)
 
-    val compromissoDataBase = CompromissoDataBase(editarActivity)
+    val compromissoDataBase = AppDataBase(editarActivity)
 
     var contentValues = ContentValues()
     val alarmeConfig = AlarmeConfig(editarActivity)
